@@ -55,18 +55,38 @@ The easiest way to start the app in development and debugging mode with liverelo
 * \+ this one is 100% JavaScript
 * \+ this one is much easier to install
 * \+ this one has cross-browser (media) file inputs
-* \+ this one has the ability to override default form values on launch through the API 
+* \+ this one has the ability to override default form values on launch through the API (v2)
+* \+ this one has a more advanced iframeable webform view that can communicate back to the parent window, enabled through the API (v2)
+* \+ this one has [external authentication](#authentication) support 
 * \- this one will not store the application in your browser for offline launch (yet) - it requires a constant connection to the server (this server may be on a local network though)
 * \- this one will not store records locally in your browser (yet) - it will submit records immediately to the server
 * \- this one will not store draft records (yet) (see previous)
-* \- missing API endpoints and corresponding views: /\*/single (single submission views), /survey__s__/\* 
+* \- missing API endpoints and corresponding views: all endpoints containing "/single" (single submission views), and "/survey__s__/" 
 
 ### Additional differences with the full-fledged service at [enketo.org](https://enketo.org)
 
-* \- no form authentication (yet)
-* \- no [Grid Theme](http://blog.enketo.org/gorgeous-grid/)
+* \- no [enketo-managed form authentication](#authentication) (yet)
+* \- no [Grid Theme](http://blog.enketo.org/gorgeous-grid/) (yet)
 * \- no [Forms](https://enketo.org/forms) app
-* \- no [Formtester](https://enketo.org/formtester) app
+* \- no [Formtester](https://enketo.org/formtester) app (planning to integrate this functionality in the form previews)
+
+
+### Authentication
+
+This app does not (yet) manage [OpenRosa form authentication](https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI) for protected forms, i.e. it does not have a login page, does not store credentials and does not itself manage any sessions.
+
+It does allow you to use _external authentication_, i.e. the authentication management of your form and data server. It re-directs users to a login page on your server and simply passes any cookies back to your server whenever it makes a request. It is up to your server to authenticate based on the cookie content. It requires any enketo-express webform page to have access to these browser cookies and therefore practically means both your server and enketo-express have to be on the same domain (a different subdomain is possible when setting cross-domain cookies). It also requires the login page to have a mechanism for redirecting the authenticated user via a query string parameter.
+
+To make use of external authentication set the following in [config.json](config/config.json):
+
+* linked form and data server -> authentication -> managed by enketo -> __false__
+* linked form and data server -> authentication -> external login url that sets cookie -> e.g. http://example.com/login?return={RETURNURL}, where {RETURNURL} will be set by enketo.
+
+
+### Funding
+
+The development of this application was funded by [KoBo Toolbox (Harvard Humanitarian Inititive)](https://kobotoolbox.org), [iMMAP](http://immap.org), [OpenClinica](https://openclinica.com), and [Enketo LLC](https://enketo.org). The [Enketo-core](https://github.com/enketo/enketo-core) library this application was built around also obtained significant funding from [SEL (Columbia University)](http://modi.mech.columbia.edu/), the [Santa Fe Institute](http://www.santafe.edu/), and the [HRP project](http://www.who.int/reproductivehealth/topics/mhealth/en/). 
+
 
 ### License
 
