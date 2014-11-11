@@ -25,11 +25,13 @@ _\* sometimes `vagrant up` fails for reasons beyond our control - e.g. if extern
 
 ### How to configure
 
-All configuration is done in [config.json](./config/config.json). The configuration items mostly have self-explanatory names and sample values
+All configuration is done in [config.json](./config/config.json). The configuration items have self-explanatory names and helpful sample values.
 
 The `maps` configuration can include an array of Mapbox TileJSON objects (or a subset of these with at least a tiles (array) and an attribution property)
 
 The default production config includes 2 redis instances for the cache. You can **greatly simplify installation by using 1 redis instance** instead (for non-production usage). To do this set the redis.cache.port to 6379 (same as redis.main.port). To set up 2 instances properly for production, you'll find the vagrant setup steps in [bootstrap.sh](./setup/bootstrap.sh) useful.
+
+To configure external authentication see [this section](#authentication)
 
 The API is accessible on **/api/v2** (v2 is backwards-compatible with enketo-legacy's v1)
 
@@ -75,7 +77,7 @@ The easiest way to start the app in development and debugging mode with liverelo
 
 This app does not (yet) manage [OpenRosa form authentication](https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI) for protected forms, i.e. it does not have a login page, does not store credentials and does not itself manage any sessions.
 
-It does allow you to use _external authentication_, i.e. the authentication management of your form and data server. It re-directs users to a login page on your server and simply passes any cookies back to your server whenever it makes a request. It is up to your server to authenticate based on the cookie content. It requires any enketo-express webform page to have access to these browser cookies and therefore practically means both your server and enketo-express have to be on the same domain (a different subdomain is possible when setting cross-domain cookies). It also requires the login page to have a mechanism for redirecting the authenticated user via a query string parameter.
+It does enable the use of _external authentication_, i.e. the authentication management of your form and data server. Whenever a request (form, formlist, submission) requires authentication, enketo-express re-directs the user to a login page on the form and data server and simply passes any cookies back to that server whenever it makes a request. It is up to the form and data server to authenticate based on the cookie content. It requires any enketo-express webform page to have access to these browser cookies. This will normally require that both the form and data server as well as enketo-express have to be on the same domain (a different subdomain is possible when setting cross-domain cookies). It also requires the login page to have a mechanism for redirecting the authenticated user back, via a query string parameter.
 
 To make use of external authentication set the following in [config.json](config/config.json):
 
