@@ -25,15 +25,15 @@ _\* sometimes `vagrant up` fails for reasons beyond our control - e.g. if extern
 
 ### How to configure
 
-All configuration is done in [config.json](./config/config.json). The configuration items have self-explanatory names and helpful sample values.
+All configuration is done in [config.json](./config/config.json). The configuration items have self-explanatory names and helpful sample values. After editing the configuration, the app will need to be restarted.
 
 The `maps` configuration can include an array of Mapbox TileJSON objects (or a subset of these with at least a tiles (array) and an attribution property)
 
 The default production config includes 2 redis instances for the cache. You can **greatly simplify installation by using 1 redis instance** instead (for non-production usage). To do this set the redis.cache.port to 6379 (same as redis.main.port). To set up 2 instances properly for production, you'll find the vagrant setup steps in [bootstrap.sh](./setup/bootstrap.sh) useful.
 
-To configure external authentication see [this section](#authentication)
+To configure external authentication see [this section](#authentication).
 
-The API is accessible on **/api/v2** (v2 is backwards-compatible with enketo-legacy's v1)
+The API is accessible on **/api/v2** (v2 is backwards-compatible with enketo-legacy's v1).
 
 ### How to run
 Run with `npm start` from project root.
