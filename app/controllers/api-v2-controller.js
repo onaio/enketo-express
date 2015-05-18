@@ -275,10 +275,13 @@ function _generateQueryString( params ) {
 }
 
 function _generateWebformUrls( id, req ) {
+    var host = req.get('x-forwarded-host');
+    host = host !== undefined ? host : req.headers.host;
+
     var queryString,
         obj = {},
         protocol = (req.app.get( 'linked form and data server' ).authentication[ 'allow insecure transport' ]) ? req.protocol : "https",
-        baseUrl = protocol + '://' + req.headers.host + '/',
+        baseUrl = protocol + '://' + host + '/',
         idPartOnline = '::' + id,
         idPartOffline = '#' + id;
 
