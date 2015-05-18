@@ -278,7 +278,8 @@ function _generateWebformUrls( id, req ) {
     var queryString,
         obj = {},
         protocol = req.headers[ 'x-forwarded-proto' ] || req.protocol,
-        baseUrl = protocol + '://' + req.headers.host + '/',
+        host = req.headers[ 'x-forwarded-host' ] !== undefined ? req.headers[ 'x-forwarded-host' ] : req.headers.host,
+        baseUrl = protocol + '://' + host + '/',
         idPartOnline = '::' + id,
         idPartOffline = '#' + id;
 
