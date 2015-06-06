@@ -294,7 +294,7 @@ define( [ 'store', 'connection', 'gui', 'q', 'settings', 'translator' ], functio
                 } );
 
                 // TODO enable export button
-                // $exportButton.prop( 'disabled', false );
+                $exportButton.prop( 'disabled', false );
 
                 records.forEach( function( record ) {
                     // if there is at least one record not marked as draft

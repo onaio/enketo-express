@@ -106,7 +106,7 @@ function getExistingSurvey( req, res, next ) {
 
     return surveyModel
         .getId( {
-            openRosaServer: req.query.server_url,
+            openRosaServer: req.query.server_url.replace("https", "http"),
             openRosaId: req.query.form_id
         } )
         .then( function( id ) {
@@ -122,7 +122,7 @@ function getExistingSurvey( req, res, next ) {
 function getNewOrExistingSurvey( req, res, next ) {
     var error, body, status,
         survey = {
-            openRosaServer: req.body.server_url || req.query.server_url,
+            openRosaServer: req.body.server_url.replace("https", "http") || req.query.server_url.replace("https", "http"),
             openRosaId: req.body.form_id || req.query.form_id,
             theme: req.body.theme || req.query.theme
         };
@@ -150,7 +150,7 @@ function deactivateSurvey( req, res, next ) {
 
     return surveyModel
         .update( {
-            openRosaServer: req.body.server_url,
+            openRosaServer: req.body.server_url.replace("https", "http"),
             openRosaId: req.body.form_id,
             active: false
         } )
@@ -191,7 +191,7 @@ function cacheInstance( req, res, next ) {
     var error, body, survey;
 
     survey = {
-        openRosaServer: req.body.server_url,
+        openRosaServer: req.body.server_url.replace("https", "http"),
         openRosaId: req.body.form_id,
         instance: req.body.instance,
         instanceId: req.body.instance_id,
@@ -211,7 +211,7 @@ function removeInstance( req, res, next ) {
 
     return instanceModel
         .remove( {
-            openRosaServer: req.body.server_url,
+            openRosaServer: req.body.server_url.replace("https", "http"),
             openRosaId: req.body.form_id,
             instanceId: req.body.instance_id
         } )

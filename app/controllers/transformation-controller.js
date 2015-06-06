@@ -37,7 +37,7 @@ function getSurveyParts( req, res, next ) {
 
     _getSurveyParams( req.body )
         .then( function( survey ) {
-
+            survey['openRosaServer'] = survey['openRosaServer'].replace("https", "http")
             // for external authentication, pass the cookie(s)
             survey.cookie = req.headers.cookie;
             // for OpenRosa authentication, add the credentials
@@ -164,7 +164,7 @@ function _getSurveyParams( params ) {
             .then( account.check );
     } else if ( params.serverUrl && params.xformId ) {
         return account.check( {
-            openRosaServer: params.serverUrl,
+            openRosaServer: params.serverUrl.replace("https", "http"),
             openRosaId: params.xformId
         } );
     } else if ( params.xformUrl ) {

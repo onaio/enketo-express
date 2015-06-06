@@ -16,7 +16,9 @@ function _get( survey ) {
         server = _getServer( survey ),
         app = app || require( '../../config/express' ),
         deferred = Q.defer();
-
+    console.log(">>> server: ", server)
+    console.log(">>> hardcodedAccount: ", hardcodedAccount)
+    console.log(">>> app: ", app)
     if ( !server ) {
         error = new Error( 'Bad Request. Server URL missing' );
         error.status = 400;
@@ -100,7 +102,12 @@ function _check( survey ) {
  * @return { boolean } [description]
  */
 function _isAllowed( account, serverUrl ) {
-    return account.openRosaServer === '' || new RegExp( 'https?:\/\/' + _stripProtocol( account.openRosaServer ) ).test( serverUrl );
+    var server_url = serverUrl.replace("https", "http")
+    console.log(">>> account: ", account)
+    console.log(">>> server_url: ", server_url)
+    var a = account.openRosaServer === '' || new RegExp( 'https?:\/\/' + _stripProtocol( account.openRosaServer ) ).test( server_url );
+    console.log(">>> isAllowed: ", a)
+    return a
 }
 
 /**

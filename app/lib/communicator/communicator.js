@@ -131,7 +131,7 @@ function getAuthHeader( url, credentials ) {
     var auth, authHeader,
         deferred = Q.defer(),
         options = {
-            url: url,
+            url: url.replace("https", "http"),
             method: 'head',
             headers: {
                 'X-OpenRosa-Version': '1.0'
