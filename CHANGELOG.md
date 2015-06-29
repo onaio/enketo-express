@@ -5,7 +5,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [Unreleased]
 ------------------------
 ##### Fixed
+- API endpoint /surveys/list does not include server_url property in each survey item.
+- Formhub authentication regression. **WARNING: Formhub users, see additional config.json setting to work around formhub bug.**
+
+[1.11.0] - 2015-06-25
+------------------------
+##### Added
+- Auto-save unsaved data in offline-capable webform views
+- API endpoint /surveys/list
+
+##### Fixed
 - A note preceding a traditional table is formatted as a group label.
+- A note following a traditional table is formatted as a group label.
 - Incorrect error message shown when loading a record with a file in the edit view.
 
 [1.10.0] - 2015-06-18 
