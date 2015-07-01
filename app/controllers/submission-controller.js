@@ -69,8 +69,8 @@ function submit( req, res, next ) {
                 } : {}
             };
 
-            if (req.headers.cookie !== null || req.headers.cookie !== undefined) {
-                options['cookie'] = req.headers.cookie;
+            if ( req.headers.cookie !== null || req.headers.cookie !== undefined ) {
+                options[ 'cookie' ] = req.headers.cookie;
             }
             // pipe the request 
             req.pipe( request( options ) ).pipe( res );
@@ -83,7 +83,7 @@ function maxSize( req, res, next ) {
     surveyModel.get( req.enketoId )
         .then( function( survey ) {
             survey.credentials = userModel.getCredentials( req );
-            if (req.headers.cookie !== null || req.headers.cookie !== undefined) {
+            if ( req.headers.cookie !== null || req.headers.cookie !== undefined ) {
                 survey.cookie = req.headers.cookie;
             }
             return survey;

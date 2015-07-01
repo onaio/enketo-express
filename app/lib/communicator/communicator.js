@@ -122,8 +122,8 @@ function authenticate( survey ) {
         method: config[ 'linked form and data server' ][ 'legacy formhub' ] ? 'get' : 'head'
     };
 
-    if (survey.cookie !== undefined || survey.cookie !== null) {
-        options['headers'] = {
+    if ( survey.cookie !== undefined || survey.cookie !== null ) {
+        options[ 'headers' ] = {
             'cookie': survey.cookie
         }
     }
@@ -160,7 +160,7 @@ function getAuthHeader( url, credentials ) {
             req.method = 'POST';
             auth = new Auth( req );
             auth.hasAuth = true;
-            if (credentials !== null) {
+            if ( credentials !== null ) {
                 auth.user = credentials.user;
                 auth.pass = credentials.pass;
             }
