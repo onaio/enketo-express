@@ -62,13 +62,20 @@ function submit( req, res, next ) {
             return communicator.getAuthHeader( submissionUrl, credentials );
         } )
         .then( function( authHeader ) {
+            // removed 'headers' key below from options because it was causing
+            // cookies to be sent to form/data server
+            /*
+            headers: authHeader ? {
+                'Authorization': authHeader
+            } : {}
+            */
             options = {
                 url: submissionUrl,
-                headers: authHeader ? {
-                    'Authorization': authHeader
-                } : {}
             };
 
+            if ( req.headers.cookie !== null || req.headers.cookie !== undefined ) {
+                options[ 'cookie' ] = req.headers.cookie;
+            }
             // pipe the request 
             req.pipe( request( options ) ).pipe( res );
 
@@ -80,6 +87,9 @@ function maxSize( req, res, next ) {
     surveyModel.get( req.enketoId )
         .then( function( survey ) {
             survey.credentials = userModel.getCredentials( req );
+            if ( req.headers.cookie !== null || req.headers.cookie !== undefined ) {
+                survey.cookie = req.headers.cookie;
+            }
             return survey;
         } )
         .then( communicator.getMaxSize )

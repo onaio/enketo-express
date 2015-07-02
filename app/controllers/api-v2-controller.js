@@ -297,7 +297,8 @@ function _generateQueryString( params ) {
 function _generateWebformUrls( id, req ) {
     var queryString,
         obj = {},
-        protocol = req.headers[ 'x-forwarded-proto' ] || req.protocol,
+        req_protocol = req.headers[ 'x-forwarded-proto' ] || req.protocol,
+        protocol = (req.app.get( 'linked form and data server' ).authentication[ 'allow insecure transport' ]) ? req_protocol : "https",
         baseUrl = protocol + '://' + req.headers.host + '/',
         idPartOnline = '::' + id,
         idPartOffline = '#' + id;
