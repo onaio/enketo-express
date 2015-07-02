@@ -37,7 +37,7 @@ router
         next( error );
     } );
 
-/** 
+/**
  * Simply pipes well-formed request to the OpenRosa server and
  * copies the response received.
  *
@@ -74,7 +74,7 @@ function submit( req, res, next ) {
                 } : {},
                 timeout: req.app.get( 'timeout' ) + 500
             };
-            // pipe the request 
+            // pipe the request
             req.pipe( request( options ) )
                 .on( 'response', function( orResponse ) {
                     if ( orResponse.statusCode === 201 ) {
