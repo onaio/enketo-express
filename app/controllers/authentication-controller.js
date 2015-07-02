@@ -23,8 +23,8 @@ function login( req, res, next ) {
     if ( authSettings.type.toLowerCase() !== 'basic' ) {
         if ( authSettings.url ) {
             // the url is expected to:
-            // - authenticate the user, 
-            // - set a session cookie (cross-domain if necessary) or add a token as query parameter to the return URL, 
+            // - authenticate the user,
+            // - set a session cookie (cross-domain if necessary) or add a token as query parameter to the return URL,
             // - and return the user back to Enketo
             // - enketo will then pass the cookie or token along when requesting resources, or submitting data
             // Though returnUrl was encoded with encodeURIComponent, for some reason it appears to have been automatically decoded here.

@@ -104,6 +104,12 @@ function authenticate( survey ) {
         method: config[ 'linked form and data server' ][ 'legacy formhub' ] ? 'get' : 'head',
     };
 
+    if ( survey.cookie !== null ) {
+        options[ 'headers' ] = {
+            'cookie': survey.cookie
+        };
+    }
+
     return _request( options )
         .then( () => {
             debug( 'successful (authenticated if it was necessary)' );
@@ -113,7 +119,7 @@ function authenticate( survey ) {
 
 /**
  * Generates an Auhorization header that can be used to inject into piped requests (e.g. submissions).
- * 
+ *
  * @param  {string} url         [description]
  * @param  {?{user: string, pass: string}=} credentials [description]
  * @return {string}             [description]
