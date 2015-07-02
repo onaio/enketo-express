@@ -62,16 +62,17 @@ function submit( req, res, next ) {
             return communicator.getAuthHeader( submissionUrl, credentials );
         } )
         .then( function( authHeader ) {
+            // removed 'headers' key below from options because it was causing
+            // cookies to be sent to form/data server
+            /*
+            headers: authHeader ? {
+                'Authorization': authHeader
+            } : {}
+            */
             options = {
                 url: submissionUrl,
-                headers: authHeader ? {
-                    'Authorization': authHeader
-                } : {}
             };
 
-            if (req.headers.cookie !== null || req.headers.cookie !== undefined) {
-                options['cookie'] = req.headers.cookie;
-            }
             // pipe the request 
             req.pipe( request( options ) ).pipe( res );
 
