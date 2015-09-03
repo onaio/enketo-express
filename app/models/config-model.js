@@ -13,8 +13,8 @@ var config = require( '../../config/default-config' ),
 merge( config, localConfig );
 
 // detect supported themes
-config[ 'themes supported' ] = localConfig['themes supported'] !== undefined ? localConfig['themes supported'] : [];
-if ( localConfig['themes supported'] === undefined && fs.existsSync( themePath ) ) {
+config[ 'themes supported' ] = localConfig[ 'themes supported' ] !== undefined ? localConfig[ 'themes supported' ] : [];
+if ( localConfig[ 'themes supported' ] === undefined && fs.existsSync( themePath ) ) {
     fs.readdirSync( themePath ).forEach( function( file ) {
         var matches = file.match( /^theme-([A-z]+)\.css$/ );
         if ( matches && matches.length > 1 ) {
