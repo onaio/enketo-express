@@ -141,6 +141,10 @@ function _respond( res, survey ) {
 
     delete survey.credentials;
 
+    if (typeof(survey.theme) === 'undefined') {
+        survey.theme = '';
+    }
+
     res.status( 200 );
     res.send( {
         form: survey.form,
