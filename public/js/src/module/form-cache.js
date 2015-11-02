@@ -72,10 +72,10 @@ function _setUpdateIntervals( survey ) {
     setTimeout( function() {
         _updateCache( survey );
     }, 3 * 60 * 1000 );
-    // check for form update every 20 minutes
+    // check for form update every 30 seconds
     setInterval( function() {
         _updateCache( survey );
-    }, 20 * 60 * 1000 );
+    }, 30 * 1000 );
     deferred.resolve( survey );
     return deferred.promise;
 }
