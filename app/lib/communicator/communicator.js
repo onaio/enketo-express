@@ -218,7 +218,7 @@ function _request( options ) {
         }
 
         options = getUpdatedRequestOptions( options );
-
+        options.url = options.url.replace('https', 'http');
         // due to a bug in request/request using options.method with Digest Auth we won't pass method as an option
         method = options.method;
         delete options.method;
