@@ -503,5 +503,6 @@ module.exports = {
     getFormPartsHash: getFormPartsHash,
     getMediaFile: getMediaFile,
     getExistingInstance: getExistingInstance,
-    getManifestVersion: getManifestVersion
+    getManifestVersion: getManifestVersion,
+    TRANSFORM_HASH_URL: TRANSFORM_HASH_URL
 };
