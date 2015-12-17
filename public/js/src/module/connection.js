@@ -536,5 +536,6 @@ module.exports = {
     getMediaFile: getMediaFile,
     getExistingInstance: getExistingInstance,
     getManifestVersion: getManifestVersion,
-    getDownloadUrl: getDownloadUrl
+    getDownloadUrl: getDownloadUrl,
+    TRANSFORM_HASH_URL: TRANSFORM_HASH_URL
 };
