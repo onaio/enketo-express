@@ -22,6 +22,7 @@ function init( survey ) {
                 return set( survey );
             }
         } )
+        .then( _initialTransformRequest )
         .then( _setUpdateIntervals )
         .then( _setResetListener );
 }
@@ -40,6 +41,25 @@ function remove( survey ) {
     return store.survey.remove( survey.enketoId );
 }
 
+function _initialTransformRequest(survey) {
+    var error;
+    return new Promise( function( resolve, reject ) {
+        $.ajax( connection.TRANSFORM_HASH_URL, {
+            type: 'POST',
+            data: {
+                enketoId: survey.enketoId
+            }
+        } )
+        .done( function( data ) {
+            resolve( survey );
+        } )
+        .fail( function( jqXHR, textStatus, errorMsg ) {
+            error = new Error( errorMsg );
+            error.status = jqXHR.status;
+            reject( error );
+        } );
+    } );
+}
 
 function _setUpdateIntervals( survey ) {
     hash = survey.hash;
