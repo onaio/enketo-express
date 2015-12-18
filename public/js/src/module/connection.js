@@ -481,7 +481,7 @@ function getManifestVersion( manifestUrl ) {
     } );
 }
 
-function getFormPartsHash( props ) {
+function getFormPartsHash( props, usePropsAsResolveArg ) {
     var error;
 
     return new Promise( function( resolve, reject ) {
@@ -492,7 +492,10 @@ function getFormPartsHash( props ) {
                 }
             } )
             .done( function( data ) {
-                resolve( data.hash );
+                var resolveArg = data.hash ;
+                if ( usePropsAsResolveArg === true )
+                    resolveArg = props ;
+                resolve( resolveArg );
             } )
             .fail( function( jqXHR, textStatus, errorMsg ) {
                 error = new Error( errorMsg );
