@@ -42,7 +42,7 @@ function remove( survey ) {
 }
 
 function _transformRequest(survey) {
-    return connection.getFormPartsHash(survey, true)
+    return connection.getFormPartsHash( survey, true )
 }
 
 function _setUpdateIntervals( survey ) {
