@@ -492,9 +492,9 @@ function getFormPartsHash( props, usePropsAsResolveArg ) {
                 }
             } )
             .done( function( data ) {
-                var resolveArg = data.hash ;
+                var resolveArg = data.hash;
                 if ( usePropsAsResolveArg === true )
-                    resolveArg = props ;
+                    resolveArg = props;
                 resolve( resolveArg );
             } )
             .fail( function( jqXHR, textStatus, errorMsg ) {
