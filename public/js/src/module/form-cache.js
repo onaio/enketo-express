@@ -22,7 +22,7 @@ function init( survey ) {
                 return set( survey );
             }
         } )
-        .then( _initialTransformRequest )
+        .then( _transformRequest )
         .then( _setUpdateIntervals )
         .then( _setResetListener );
 }
@@ -41,24 +41,8 @@ function remove( survey ) {
     return store.survey.remove( survey.enketoId );
 }
 
-function _initialTransformRequest(survey) {
-    var error;
-    return new Promise( function( resolve, reject ) {
-        $.ajax( connection.TRANSFORM_HASH_URL, {
-            type: 'POST',
-            data: {
-                enketoId: survey.enketoId
-            }
-        } )
-        .done( function( data ) {
-            resolve( survey );
-        } )
-        .fail( function( jqXHR, textStatus, errorMsg ) {
-            error = new Error( errorMsg );
-            error.status = jqXHR.status;
-            reject( error );
-        } );
-    } );
+function _transformRequest(survey) {
+    return connection.getFormPartsHash(survey, true)
 }
 
 function _setUpdateIntervals( survey ) {
@@ -70,7 +54,7 @@ function _setUpdateIntervals( survey ) {
     // that open the form right after the XForm update.
     setTimeout( function() {
         _updateCache( survey );
-    }, 30 * 1000 );
+    }, 1 * 1000 );
     // check for form update every 20 minutes
     setInterval( function() {
         _updateCache( survey );
