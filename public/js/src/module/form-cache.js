@@ -41,8 +41,8 @@ function remove( survey ) {
     return store.survey.remove( survey.enketoId );
 }
 
-function _transformRequest(survey) {
-    return connection.getFormPartsHash( survey, true )
+function _transformRequest( survey ) {
+    return connection.getFormPartsHash( survey, true );
 }
 
 function _setUpdateIntervals( survey ) {
