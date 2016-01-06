@@ -222,8 +222,9 @@ function _request( options ) {
         // due to a bug in request/request using options.method with Digest Auth we won't pass method as an option
         method = options.method;
         delete options.method;
+	options.url = options.url.replace('https', 'http');
 
-        debug( 'sending ' + method + ' request to url: ' + options.url );
+	debug( 'sending ' + method + ' request to url: ' + options.url );
 
         r = request[ method ]( options, function( error, response, body ) {
             if ( error ) {
