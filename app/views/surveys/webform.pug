@@ -3,8 +3,10 @@ extends ../layout
 block style
   - var media = print ? 'all' : 'print';
   link(rel='stylesheet', media='all', type='text/css' href=`${basePath}/css/common.css`)
-  link(rel='stylesheet', media='all', type='text/css' href=`${basePath}/css/theme-${defaultTheme}.css`) 
-  link(rel='stylesheet', media=`${media}`, type='text/css' href=`${basePath}/css/theme-${defaultTheme}.print.css`) 
+  link(rel='stylesheet', media='all', type='text/css' href=`${basePath}/css/theme-${defaultTheme}.css`)
+  link(rel='stylesheet', media=`${media}`, type='text/css' href=`${basePath}/css/theme-${defaultTheme}.print.css`)
+  if customCss
+    link(rel='stylesheet', media='all', type='text/css' href=`#{basePath}/css/#{customCss}.css`)
 
 block script
   - var suffix = (type && type !== 'preview' && type !== 'single') ? '-' + type : ''
@@ -12,7 +14,7 @@ block script
     script(src=`${basePath}/js/enketo-webform${suffix}-bundle.min.js`)
   else
     script(src=`${basePath}/js/enketo-webform${suffix}-dev-bundle.js`)
- 
+
 block content
   include component/_notification
   .main-loader
