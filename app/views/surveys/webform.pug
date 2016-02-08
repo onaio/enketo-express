@@ -4,6 +4,7 @@ block style
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   link(rel='stylesheet', media='all', type='text/css' href=`${basePath}/css/theme-${defaultTheme}.css`) 
   link(rel='stylesheet', media='print', type='text/css' href=`${basePath}/css/theme-${defaultTheme}.print.css`) 
 =======
@@ -20,6 +21,12 @@ block style
 
 >>>>>>> 8393891... ME: changed apostrophes for customCss block
 
+=======
+  link(rel='stylesheet', media='all', type='text/css' href='#{basePath}/css/theme-#{defaultTheme}.css') 
+  link(rel='stylesheet', media='print', type='text/css' href=#{basePath}'/css/theme-#{defaultTheme}.print.css')
+  if customCss
+    link(rel='stylesheet', media='all', type='text/css' href='#{basePath}/css/#{customCss}.css')
+>>>>>>> bc8e021... ME: create custom css variable and loading if it exists
 
 block script
   - var suffix = (type && type !== 'preview' && type !== 'single') ? '-' + type : ''
