@@ -438,6 +438,7 @@ function _setEventHandlers() {
                     .catch( function( e ) {
                         gui.alert( e.message );
                     } );
+                $button.btnBusyState( false );
             }
         }, 100 );
         return false;
