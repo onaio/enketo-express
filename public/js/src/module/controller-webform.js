@@ -439,6 +439,7 @@ function _setEventHandlers() {
                     .then( function() {
                         $button.btnBusyState( false );
                     } );
+                $button.btnBusyState( false );
             }
         }, 100 );
         return false;
