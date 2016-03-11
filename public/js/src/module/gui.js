@@ -461,6 +461,7 @@ function getErrorResponseMsg( statusCode ) {
     };
 
     console.debug( 'getting msg belonging to ', statusCode );
+    console.console( 'getting msg belonging to ', statusCode );
 
     statusCode = ( typeof statusCode !== 'undefined' ) ? statusCode.toString() : 'undefined';
 
