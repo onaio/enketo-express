@@ -7,16 +7,22 @@
       "iossafari": {}
     },
     "appupdated": {},
+<<<<<<< HEAD
     "closing": {},
+=======
+>>>>>>> 9f3d149... ME: update from updstream - old english translation file added
     "default": {},
     "export": {
       "error": {},
       "success": {}
     },
     "formupdated": {},
+<<<<<<< HEAD
     "gotonotfound": {
       "msg": "Failed to find question \"__path__\" in form. Is the reference to this question correct?"
     },
+=======
+>>>>>>> 9f3d149... ME: update from updstream - old english translation file added
     "loaderror": {},
     "logout": {},
     "offlinesupported": {},
@@ -28,7 +34,10 @@
     "submission": {},
     "submissionerror": {},
     "submissionsuccess": {},
+<<<<<<< HEAD
     "thanks": {},
+=======
+>>>>>>> 9f3d149... ME: update from updstream - old english translation file added
     "validationerror": {},
     "validationsuccess": {},
     "xpatherror": {}
@@ -51,7 +60,10 @@
     "pages": {}
   },
   "formfooter": {
+<<<<<<< HEAD
     "complete": {},
+=======
+>>>>>>> 9f3d149... ME: update from updstream - old english translation file added
     "savedraft": {},
     "submit": {},
     "validate": {}
@@ -72,6 +84,7 @@
   "store": {
     "error": {}
   },
+<<<<<<< HEAD
   "submission": {},
   "geopicker": {},
   "selectpicker": {},
@@ -83,4 +96,7 @@
 =======
   }
 >>>>>>> dd2a6a0... Fix translation files issue
+=======
+  "submission": {}
+>>>>>>> 9f3d149... ME: update from updstream - old english translation file added
 }
