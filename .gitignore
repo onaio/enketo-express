@@ -16,6 +16,7 @@ config/config.json
 .nodemon-*
 .DS_Store
 .env
+.vscode/
 enketo-main.rdb
 setup/docker/secrets/*
 setup/docker/redis_main_data/*
