@@ -1,4 +1,4 @@
-$offline-color: #d15200;
+$offline-color: #0b77c2;
 
 .form-header {
     display: flex;
@@ -126,7 +126,7 @@ $offline-color: #d15200;
         width: 34px;
         height: 34px;
         background-color: $offline-color;
-        background-image: url($base-path + "/images/offline-enabled.png");
+        background-image: url($base-path + "/images/wfp-offline-enabled.png");
         background-repeat: no-repeat;
         opacity: 1;
 
