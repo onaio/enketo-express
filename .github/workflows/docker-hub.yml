@@ -6,6 +6,12 @@ on:
         # usually releases
         tags:
             - '*'
+    workflow_dispatch:
+      inputs:
+          versionTag:
+              description: "Version Tag"
+              required: true
+              default: ''
 
 jobs:
     docker-build-push:
@@ -14,7 +20,7 @@ jobs:
             - uses: actions/checkout@v2
             - uses: mr-smithers-excellent/docker-build-push@v2
               with:
-                  image: enketo/enketo-express
+                  image: onaio/enketo-express
                   registry: docker.io
                   dockerfile: Dockerfile
                   username: ${{ secrets.DOCKER_HUB_USERNAME }}
